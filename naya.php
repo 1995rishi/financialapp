@@ -1,0 +1,33 @@
+<html>
+<?php
+require('connect.php');
+session_start();
+if (isset($_GET['d']) && isset($_GET['b']) && isset($_GET['p'])) {
+$d=$_GET['d'];
+$b=$_GET['b'];
+$p=$_GET['p'];
+}
+	if(!isset($_SESSION["parray"]))
+	{
+		$_SESSION["parray"]=[];
+	}
+	if(!isset($_SESSION["darray"]))
+	{
+		$_SESSION["darray"]=[];
+	}	
+	if(!isset($_SESSION["barray"]))
+	{
+		$_SESSION["barray"]=[];
+	}			
+	if(!isset($_SESSION["k"]))
+	{
+		$_SESSION["k"]=0;
+	}
+	$u=(int)($_SESSION["k"]);
+	$_SESSION["darray"][$u]=$d;
+	$_SESSION["barray"][$u]=$b;
+	$_SESSION["parray"][$u]=$p;
+	$_SESSION["k"]+=1;
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+?>
+</html>
